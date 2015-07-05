@@ -52,11 +52,21 @@
 
 <p>Vivamus vitae hendrerit nunc. Morbi venenatis finibus massa, in fermentum mi finibus ut. Nunc pulvinar neque in euismod interdum. Mauris nec enim vel arcu lobortis pharetra. Maecenas interdum sit amet turpis nec porttitor. Pellentesque ullamcorper aliquet risus at egestas. Cras aliquam rutrum risus vel consectetur. Integer sed luctus turpis. Maecenas sit amet turpis eget felis lobortis eleifend eu porttitor mi. Pellentesque euismod sapien at justo feugiat, a volutpat mauris aliquam.</p>
 
+<ul>
+    <li><a href="#first" class="anchor" title="">First</a></li>
+    <li><a href="#second" class="anchor" title="">second</a></li>
+    <li><a href="#third" class="anchor" title="">third</a></li>
+    <li><a href="#fourth" class="anchor" title="">fourth</a></li>
+    <li><a href="#fifth" class="anchor" title="">fifth</a></li>
+</ul>
+
     <script src="src/scroll.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
         var sc = new Scroll();
         try{
-            sc.init();
+            sc.init({
+                speed: 20
+            });
         } catch(e) {
             console.error(e);
         }
