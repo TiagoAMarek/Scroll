@@ -35,6 +35,7 @@ var Scroll = function () {
             sameValue = PRIVATE.scrolling(position);
             if(element.scrollTop >= position || sameValue === true){
                 clearInterval(interval);
+                PRIVATE.auxValue = 0;
             }
         }, 10);
     };
