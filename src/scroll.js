@@ -10,18 +10,19 @@ var Scroll = function () {
         PRIVATE = {},
         element = document.querySelector('body');
 
+    PRIVATE.auxValue = 0;
+
     PRIVATE.scrolling = function (position) {
-        var auxValue = 0,
-            sameValue = false;
+        var sameValue = false;
 
         var el = element.scrollTop + 10;
         if(el < position){
-            element.scrollTop = auxValue += 10;
-            if(auxValue !== element.scrollTop){
+            element.scrollTop = PRIVATE.auxValue += 10;
+            if(PRIVATE.auxValue !== element.scrollTop){
                 sameValue = true;
             }
         } else {
-            element.scrollTop += (el - position);
+            element.scrollTop += (position - element.scrollTop);
         }
         return sameValue;
     };
@@ -49,6 +50,10 @@ var Scroll = function () {
 
     PUBLIC.init = function() {
         var anchors = document.querySelectorAll('.anchor');
+        if (anchors.length === 0) {
+            throw "There's no anchors to handle";
+        }
+
         PRIVATE.eventHandler(anchors);
     };
 

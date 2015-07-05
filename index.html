@@ -54,8 +54,12 @@
 
     <script src="src/scroll.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
-    var sc = new Scroll();
-    sc.init();
+        var sc = new Scroll();
+        try{
+            sc.init();
+        } catch(e) {
+            console.error(e);
+        }
     </script>
 </body>
 </html>
