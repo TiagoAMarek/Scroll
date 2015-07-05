@@ -1,1 +1,1 @@
-# Scroll Apllication
+# Scroll Application
