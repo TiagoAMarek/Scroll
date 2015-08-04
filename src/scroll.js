@@ -76,8 +76,8 @@ var Scroll = function () {
     };
 
     // Handle click events in every <a> with class .anchor
-    PRIVATE.eventHandler = function() {
-        element.addEventListener('click', function(ev) {
+    PRIVATE.eventHandler = function(target) {
+        target.addEventListener('click', function(ev) {
             if(ev.target.className === 'anchor'){
                 ev.preventDefault(); // prevent default anchor in href
                 PRIVATE.startEvent(ev.target);
@@ -87,8 +87,12 @@ var Scroll = function () {
 
     // Starts the application
     PUBLIC.init = function(data) {
+        if(!data.target){
+            throw new Error('[app.Scroll] You need to define a target for the events.');
+        }
+
         PRIVATE.configureSettings(data);
-        PRIVATE.eventHandler();
+        PRIVATE.eventHandler(data.target);
     };
 
     return PUBLIC;
