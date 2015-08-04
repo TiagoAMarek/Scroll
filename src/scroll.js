@@ -18,17 +18,17 @@ var Scroll = function () {
         PRIVATE.settings.speed = data.speed ? data.speed : 10;
     };
 
-    // Return scroll's direction
+    // Return scrolls direction
     PRIVATE.getDirection = function(origin, destiny){
         return destiny > origin ? 'down' : destiny === origin ? 'equal' : 'up';
     };
 
-    // Verify if scroll can go down
+    // Verifying if scroll can go down
     PRIVATE.verifyScrollStop = function() {
         return PRIVATE.auxValue !== element.scrollTop ? true : false;
     };
 
-    // Moves the scroll down by 10px
+    // Moves scroll down by 10px
     PRIVATE.scrollHandlerDown = function (destiny) {
         var sameValue = false;
 
@@ -43,7 +43,7 @@ var Scroll = function () {
         return sameValue;
     };
 
-    // Moves the scroll Up by 10px
+    // Moves scroll Up by 10px
     PRIVATE.scrollHandlerUp = function (destiny) {
         if(element.scrollTop > destiny){
             element.scrollTop -= 10;
@@ -52,14 +52,14 @@ var Scroll = function () {
         }
     };
 
-    // Starts the animation event with interval
+    // Starts animation event with interval
     PRIVATE.startEvent = function(that){
         var destiny = document.querySelector(that.hash).offsetTop,
-            sameValue = false;
+            sameValue = false,
+            direction;
 
-        var direction = PRIVATE.getDirection(element.scrollTop, destiny);
-
-        direction === 'equal' ? sameValue = true : sameValue = false;
+        direction = PRIVATE.getDirection(element.scrollTop, destiny);
+        sameValue = direction === 'equal' ? true : false;
 
         var interval = window.setInterval(function() {
             if(direction === 'down') {
@@ -76,24 +76,19 @@ var Scroll = function () {
     };
 
     // Handle click events in every <a> with class .anchor
-    PRIVATE.eventHandler = function(anchors) {
-        for (var i = 0; i < anchors.length; i++) {
-            anchors[i].addEventListener('click', function(ev) {
+    PRIVATE.eventHandler = function() {
+        element.addEventListener('click', function(ev) {
+            if(ev.target.className === 'anchor'){
                 ev.preventDefault(); // prevent default anchor in href
-                PRIVATE.startEvent(this);
-            });
-        };
+                PRIVATE.startEvent(ev.target);
+            }
+        });
     };
 
     // Starts the application
     PUBLIC.init = function(data) {
-        var anchors = document.querySelectorAll('.anchor');
-        if (anchors.length === 0) {
-            throw "There's no anchors to handle";
-        }
-
         PRIVATE.configureSettings(data);
-        PRIVATE.eventHandler(anchors);
+        PRIVATE.eventHandler();
     };
 
     return PUBLIC;
