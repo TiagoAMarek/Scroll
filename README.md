@@ -4,7 +4,7 @@
 Adds smooth movement to scrollbar when you click into an anchor
 
 ### How it works
-First you need to create <a> tags with ```href as a target``` and ```class '.anchor'```, so the app will know where are your anchors and where to point it:
+First you need to create link tags with ```href as a target``` and ```class '.anchor'```, so the app will know where are your anchors and where to point it:
 ```html
 <a href="#first" class="anchor" title="">First</a>
 ```
