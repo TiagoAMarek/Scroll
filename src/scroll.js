@@ -34,7 +34,7 @@ var Scroll = function () {
 
         var el = element.scrollTop + 10;
         if(el < destiny){
-            element.scrollTop = PRIVATE.auxValue += 10;
+            PRIVATE.auxValue = element.scrollTop += 10;
             sameValue = PRIVATE.verifyScrollStop();
         } else {
             element.scrollTop += (destiny - element.scrollTop);
