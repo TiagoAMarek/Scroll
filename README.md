@@ -1,6 +1,7 @@
 # Scroll Application
 
-Adds smooth movement to scrollbar
+### What it does
+Adds smooth movement to scrollbar when you click into an anchor
 
 ### How it works
 First you need to create <a> tags with ```href as a target``` and ```class '.anchor'```, so the app will know where are your anchors and where to point it:
