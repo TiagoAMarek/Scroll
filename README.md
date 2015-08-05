@@ -8,7 +8,8 @@ First you need to create <a> tags with href as a target and class '.anchor', so 
 <a href="#first" class="anchor" title="">First</a>
 ```
 After doing these, you need to start the app sending the container of your anchors and speed.
-Obs.: if you do not send a speed, default will be 10(ms).
+
+**Obs.:** if you do not send a speed, default will be 10(ms).
 
 
 ### Calling the app
